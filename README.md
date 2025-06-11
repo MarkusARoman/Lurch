@@ -1,1 +1,1 @@
-# Lurch
+# The Lurch Project
