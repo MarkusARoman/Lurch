@@ -1,4 +1,4 @@
-package com.lurch;
+package com.lurch.core;
 
 
 import org.joml.Matrix4f;
