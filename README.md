@@ -2,7 +2,7 @@
 
 Currently in early development
 <br>
-##Features
+## Features
 - Window creation
 - Discrete timers
 - Shaders
