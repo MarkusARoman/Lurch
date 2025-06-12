@@ -1,4 +1,4 @@
-package com.lurch;
+package com.lurch.display;
 
 
 import static org.lwjgl.opengl.GL11.GL_FLOAT;
