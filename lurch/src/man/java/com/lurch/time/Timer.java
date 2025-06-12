@@ -3,7 +3,7 @@ package com.lurch.time;
 /**
  * Time management utility for smooth/fixed-step game loops.
  */
-public class Time 
+public class Timer
 {
     /** 
      * Last recorded timestamp in nanoseconds. 
