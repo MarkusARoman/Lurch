@@ -4,6 +4,6 @@ Currently in early development
 <br>
 ## Features
 - Window creation
-- Discrete timers
+- Continuous & discrete timers
 - Shaders
 - Quad Rendering
