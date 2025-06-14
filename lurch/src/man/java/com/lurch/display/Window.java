@@ -25,9 +25,9 @@ public class Window
     /**
      * Creates a GLFW window with the specified width, height, and title.
      * 
-     * @param width  window width
-     * @param height window height
-     * @param title  window title
+     * @param width  Width of rendering area
+     * @param height Height of rendering area
+     * @param title  Title of the window
      */
     public Window(int width, int height, CharSequence title)
     {
