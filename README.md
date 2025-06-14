@@ -7,3 +7,5 @@ Currently in early development
 - Continuous & discrete timers
 - Shaders
 - Quad Rendering
+- Load Textures
+- Cache Textures
