@@ -6,6 +6,8 @@ import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.GLFW.*;
 
+import org.lwjgl.glfw.GLFWErrorCallback;
+
 public class Window 
 {
     /**
@@ -32,6 +34,17 @@ public class Window
         /* Restore default window hints */
         glfwDefaultWindowHints();
 
+        
+        /* Set GLFW error callback to print errors to the standard error stream */
+        GLFWErrorCallback.createPrint(System.err).set();
+
+        
+        /* Initialize GLFW */
+        if ( !glfwInit() )
+        {
+            throw new IllegalStateException("Failed to initialize GLFW");
+        }
+        
 
         /* Hints for OpenGL 4.6 */
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -50,6 +63,12 @@ public class Window
         glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
 
 
+        /* Retrieve primary monitor dimensions */
+        GLFWVidMode vidmode = glfwGetVideoMode( glfwGetPrimaryMonitor() );
+        if (width == 0)  width  = vidmode.width();  
+        if (height == 0) height = vidmode.height();
+
+
         /* Create window */
         handle = glfwCreateWindow(width, height, title, 0L, 0L);
         if (handle == 0L)
@@ -60,7 +79,6 @@ public class Window
 
 
         /* Center the window on the primary monitor */
-		GLFWVidMode vidmode = glfwGetVideoMode( glfwGetPrimaryMonitor() );
         glfwSetWindowPos(handle,
             (vidmode.width()  - width)  / 2,
             (vidmode.height() - height) / 2
@@ -89,8 +107,11 @@ public class Window
                 }
             }
         };
-
         glfwSetKeyCallback(handle, keyCallback);
+
+
+        /* Make the window visible */
+        glfwShowWindow(handle);
     }
 
 
@@ -116,11 +137,13 @@ public class Window
 
 
     /**
-     * Destroys the window an free its callbacks.
+     * Destroys the window, terminate glfw, and free its callbacks.
      */
     public void delete() 
     {
         glfwDestroyWindow(handle);
         keyCallback.free();
+        glfwTerminate();
+        glfwSetErrorCallback(null).free();
     }
 }
