@@ -1,13 +1,17 @@
 package com.lurch.display;
 
+
 import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWKeyCallback;
 import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.GLFW.*;
 
-import org.lwjgl.glfw.GLFWErrorCallback;
 
+/**
+ * GLFW window class
+ */
 public class Window 
 {
     /**
@@ -25,9 +29,9 @@ public class Window
     /**
      * Creates a GLFW window with the specified width, height, and title.
      * 
-     * @param width  Width of rendering area
-     * @param height Height of rendering area
-     * @param title  Title of the window
+     * @param width  window width
+     * @param height window height
+     * @param title  window title
      */
     public Window(int width, int height, CharSequence title)
     {
@@ -100,7 +104,7 @@ public class Window
             @Override
             public void invoke(long window, int key, int scancode, int action, int mods)
             {
-                /* Bind pressing Ecs to closing the window */
+                /* Bind pressing Esc to closing the window */
                 if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
                 {
                     glfwSetWindowShouldClose(window, true);
@@ -137,7 +141,7 @@ public class Window
 
 
     /**
-     * Destroys the window, terminate glfw, and free its callbacks.
+     * Destroys the window, terminates GLFW, and frees its callbacks.
      */
     public void delete() 
     {
