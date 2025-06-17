@@ -21,10 +21,17 @@ The simplest way to create a Shader object is to input the file path simply: e.g
 | .tesc | ``` GL40.GL_TESS_CONTROL_SHADER ``` |
 | .tese | ``` GL40.GL_TESS_EVALUATION_SHADER ``` |
 | .comp | ``` GL43.GL_COMPUTE_SHADER ``` |
-<br>
-You can also directly input the type, which is slightly faster. <br>
+
+
+
+
+You can also directly input the type, which is slightly faster.
+
 Although the fastest way is to input the file's source code as a CharSequence.
-<br><br>
-After creating your Shader object, you can add it to a ShaderProgram. <br>
-**Note:** This can only be done during instantiation. <br>
-This allows you to install or uninstall as needed. <br>
+
+
+After creating your Shader object, you can add it to a ShaderProgram.
+
+**Note:** This can only be done during instantiation.
+
+This allows you to install or uninstall as needed.
