@@ -21,5 +21,6 @@ The simplest way to create a Shader object is to input the file path simply: e.g
 | .tesc | ``` GL40.GL_TESS_CONTROL_SHADER ``` |
 | .tese | ``` GL40.GL_TESS_EVALUATION_SHADER ``` |
 | .comp | ``` GL43.GL_COMPUTE_SHADER ``` |
-<br> You can also directly input the type, which is slightly faster. <br>
+<br>
+You can also directly input the type, which is slightly faster. <br>
 Although the fastest way is to input the file's source code as a CharSequence.
