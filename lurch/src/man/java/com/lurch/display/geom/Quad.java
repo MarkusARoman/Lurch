@@ -22,6 +22,7 @@ public class Quad extends Mesh
          0.5f,  0.5f,      1f, 1f,
         -0.5f,  0.5f,      0f, 1f
     };
+    
 
     /**
      * Indices for the quad vertices.
@@ -32,6 +33,7 @@ public class Quad extends Mesh
         0, 1, 2,
         0, 2, 3
     };
+    
 
     /**
      * Constructs a Quad instance by calling super with vertex and index data.
