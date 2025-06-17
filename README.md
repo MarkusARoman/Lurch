@@ -15,7 +15,7 @@ Currently in early development
 
 ``` new Shader("name.type") ```
 | type | extension |
-| :---  | ---: |
+| :---  | :---: |
 | ".vert" | ``` GL20.GL_VERTEX_SHADER ``` |
 | ".frag" | ``` GL20.GL_FRAGMENT_SHADER ``` |
 | ".geom" | ``` GL32.GL_GEOMETRY_SHADER ``` |
