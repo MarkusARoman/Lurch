@@ -24,3 +24,5 @@ The simplest way to create a Shader object is to input the file path simply: e.g
 <br>
 You can also directly input the type, which is slightly faster. <br>
 Although the fastest way is to input the file's source code as a CharSequence.
+<br>
+After creating your Shader object, you can add it to a ShaderProgram object as a ```Shader...```
