@@ -21,6 +21,13 @@ public class Shader
 
 
     /**
+     * Path to the shader files.
+     * This is used to locate shader source files.
+     */
+    private final String SHADER_FILE = "lurch/src/main/resource/shader/";
+
+
+    /**
      * Creates a shader of the specified type.
      *
      * @param type the type of shader (e.g., GL_VERTEX_SHADER, GL_FRAGMENT_SHADER)
@@ -51,9 +58,23 @@ public class Shader
      * @param type the type of shader (e.g., GL_VERTEX_SHADER, GL_FRAGMENT_SHADER)
      * @param path the path to the shader source file
      */
-    public Shader(int type, String path)
+    public Shader(int type, String name)
     {
         this(type);
+
+
+        /* Construct the full path to the shader source file */
+        String path = SHADER_FILE + name;
+
+
+        /* Check if the shader source file exists */
+        if ( !Files.exists(Paths.get(path)) )
+        {
+            throw new RuntimeException("Shader source file not found: " + path);
+        }
+        
+
+        /* Read the shader source code from the file */
         try 
         {
             CharSequence source = new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.UTF_8);
