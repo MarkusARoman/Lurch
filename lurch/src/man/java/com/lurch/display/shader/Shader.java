@@ -28,17 +28,6 @@ public class Shader
 
 
     /**
-     * Creates a shader of the specified type.
-     *
-     * @param type the type of shader (e.g., GL_VERTEX_SHADER, GL_FRAGMENT_SHADER)
-     */
-    public Shader(int type)
-    {
-        handle = glCreateShader(type);
-    }
-
-
-    /**
      * Creates a shader of the specified type and sets its source code.
      *
      * @param type   the type of shader (e.g., GL_VERTEX_SHADER, GL_FRAGMENT_SHADER)
@@ -46,7 +35,7 @@ public class Shader
      */
     public Shader(int type, CharSequence source)
     {
-        this(type);
+        handle = glCreateShader(type);
         setSource(source);
         compile();
     }
@@ -60,7 +49,7 @@ public class Shader
      */
     public Shader(int type, String name)
     {
-        this(type);
+        handle = glCreateShader(type);
 
 
         /* Construct the full path to the shader source file */
@@ -72,7 +61,7 @@ public class Shader
         {
             throw new RuntimeException("Shader source file not found: " + path);
         }
-        
+
 
         /* Read the shader source code from the file */
         try 
@@ -84,6 +73,68 @@ public class Shader
         catch (IOException e) 
         {
             throw new RuntimeException("Failed to read shader source from " + path, e);
+        }
+    }
+
+
+    public Shader(String name)
+    {
+        /* Infer the shader type from file extension */
+        String extension = getExtension(name);
+        ShaderType type = ShaderType.fromExtension(extension);
+
+        this.handle = glCreateShader(type.getGLType());
+
+        String path = SHADER_FILE + name;
+
+        if (!Files.exists(Paths.get(path))) {
+            throw new RuntimeException("Shader source file not found: " + path);
+        }
+
+        try {
+            CharSequence source = new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.UTF_8);
+            setSource(source);
+            compile();
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read shader source from " + path, e);
+        }
+    }
+
+
+    /**
+     * Gets the file extension from the shader file name.
+     *
+     * @param name the name of the shader file
+     * @return the file extension (e.g., "vert", "frag")
+     */
+    private String getExtension(String name)
+    {
+        /* Validate the file name */
+        if (name == null || name.isEmpty()) 
+        {
+            throw new IllegalArgumentException("Shader file name cannot be null or empty");
+        }
+
+
+        try 
+        {
+            /* Find the last dot in the file name */
+            int dotIndex = name.lastIndexOf('.');
+
+
+            /* Validate the file name */
+            if (dotIndex == -1 || dotIndex == name.length() - 1) 
+            {
+                throw new IllegalArgumentException("Shader file name must have an extension: " + name);
+            }
+
+
+            /* Extract and return the file extension */
+            return name.substring(dotIndex + 1);
+        } 
+        catch (Exception e) 
+        {
+            throw new IllegalArgumentException("Shader file name must contain a valid extension: " + name, e);
         }
     }
 
