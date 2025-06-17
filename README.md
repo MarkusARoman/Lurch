@@ -5,7 +5,7 @@ Currently in early development
 ## Features
 - Window creation
 - Continuous & discrete timers
-- Shaders
+- Full Shaders Support
 - Quad Rendering
 - Load Textures
 - Cache Textures
