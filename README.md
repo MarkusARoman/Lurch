@@ -12,8 +12,8 @@ Currently in early development
 
 
 ## Shader Support
-
-``` new Shader("name.type") ```
+You can create shader objects in a variety of ways. <br>
+The simplest way is to input the file path simply: e.g., ``` Shader("name.type") ``` 
 | type | extension |
 | :---:  | :---: |
 | .vert | ``` GL20.GL_VERTEX_SHADER ``` |
