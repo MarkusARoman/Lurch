@@ -12,8 +12,7 @@ Currently in early development
 
 
 ## Shader Support
-You can create shader objects in a variety of ways. <br>
-The simplest way is to input the file path simply: e.g., ``` Shader("name.type") ``` 
+The simplest way to create a Shader object is to input the file path simply: e.g., ``` Shader("name.type") ``` 
 | type | extension |
 | :---:  | :---: |
 | .vert | ``` GL20.GL_VERTEX_SHADER ``` |
@@ -22,3 +21,7 @@ The simplest way is to input the file path simply: e.g., ``` Shader("name.type")
 | .tesc | ``` GL40.GL_TESS_CONTROL_SHADER ``` |
 | .tese | ``` GL40.GL_TESS_EVALUATION_SHADER ``` |
 | .comp | ``` GL43.GL_COMPUTE_SHADER ``` |
+<br>
+You can also directly input the type, which is slightly faster: e.g., ``` Shader(GL_TYPE_SHADER, "name.type") ``` 
+<br>
+Although the fastest way is to input the files source code as a CharSequence: e.g., ``` Shader(GL_TYPE_SHADER, SOURCE_CODE) ``` 
