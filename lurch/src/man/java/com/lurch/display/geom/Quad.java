@@ -16,7 +16,7 @@ public class Quad extends Mesh
      */
     private static final float[] VERTICES = 
     {
-        // Pos         // Tex
+        // Pos             // Tex
         -0.5f, -0.5f,      0f, 0f,
          0.5f, -0.5f,      1f, 0f,
          0.5f,  0.5f,      1f, 1f,
