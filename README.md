@@ -32,4 +32,14 @@ Although the fastest way is to input the file's source code as a CharSequence.
 After creating your Shader object, you can add it to a ShaderProgram.
 > **Note:** This can only be done during instantiation.
 
-After creating the shader program, you can install or uninstall it as needed.
+After instancing the shader program, you can install or uninstall it as needed.
+
+You may also call ``` setUniform(name, value) ``` with a variety of values.
+- int
+- float
+- boolean (value? 1 : 0)
+- Vector2f
+- Vector3f
+- Vector4f
+- Matrix3f
+- Matrix4f
