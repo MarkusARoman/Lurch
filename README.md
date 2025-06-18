@@ -11,6 +11,7 @@ Currently in early development
 - Cache Textures
 
 
+
 ## Shader Support
 The simplest way to create a Shader object is to input the file path simply: e.g., ``` Shader("name.type") ``` 
 | type | extension |
@@ -45,5 +46,7 @@ After instancing the shader program, you can install or uninstall it as needed.
 - ***Matrix4f***
 
 Remember to delete the shader using ```delete()``` when finished.
+
+
 
 ## Texture Support
