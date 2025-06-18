@@ -43,3 +43,5 @@ After instancing the shader program, you can install or uninstall it as needed.
 - ***Vector4f***
 - ***Matrix3f***
 - ***Matrix4f***
+
+## Texture Support
