@@ -37,7 +37,7 @@ After instancing the shader program, you can install or uninstall it as needed.
 You may also call ``` setUniform(name, value) ``` with a variety of values.
 - int
 - float
-- boolean (value? 1 : 0)
+- boolean "(value? 1 : 0)"
 - Vector2f
 - Vector3f
 - Vector4f
