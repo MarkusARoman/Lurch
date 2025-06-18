@@ -34,7 +34,7 @@ After creating your Shader object, you can add it to a ShaderProgram.
 
 After instancing the shader program, you can install or uninstall it as needed.
 
-You may also call ``` setUniform(name, value) ``` with a variety of values.
+### You may also call ``` setUniform(name, value) ``` with a variety of values:
 - ***int***
 - ***float***
 - ***boolean***
