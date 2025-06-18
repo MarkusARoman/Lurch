@@ -24,7 +24,6 @@ The simplest way to create a Shader object is to input the file path simply: e.g
 | .comp | ``` GL43.GL_COMPUTE_SHADER ``` |
 
 
----
 
 You can also directly input the type, which is slightly faster.
 Although the fastest way is to input the file's source code as a CharSequence.
