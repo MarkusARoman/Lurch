@@ -32,4 +32,4 @@ Although the fastest way is to input the file's source code as a CharSequence.
 After creating your Shader object, you can add it to a ShaderProgram.
 > **Note:** This can only be done during instantiation.
 
-This allows you to install or uninstall as needed.
+After creating the shader program, you can install or uninstall it as needed.
