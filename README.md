@@ -13,16 +13,22 @@ Currently in early development
 ---
 
 ## GLFW Window
-You can create a GLFW window with ``` Window(int, int, CharSequence) ``` or ``` Window(CharSequence) ``` for fullscreen.
+You can create a GLFW window with ` Window(int, int, CharSequence) ` or ` Window(CharSequence) ` for fullscreen.
 
 The window class is composed of the following fields:
-- ``` handle ``` The GLFW window ID.
-- ``` width ``` The GLFW window width in pixels. 
-- ``` height ``` The GLFW window height in pixels. 
-- ``` keyCallback ``` The GLFW key callbacks.
+- ` handle ` The GLFW window ID.
+- ` width ` The GLFW window width in pixels. 
+- ` height ` The GLFW window height in pixels. 
+- ` keyCallback ` The GLFW key callbacks.
 
 All of these fields are private and final. This class creates a constant vsynced window centered on the primary monitor in OpenGL 4.6. 
-- __TODO:__ Create parent window class or refactor window to support other scenarios.
+- __TODO:__ Refactor window to expand support for window variations.
+
+### Window Supports
+* Closing / detecting close
+* Swapping buffers, polling events. (Might change that considering `glfwPollEvents()` is redundant)
+* Memory cleanup
+* Getters for `width`, `height`, and `handle`
 
 ---
 
