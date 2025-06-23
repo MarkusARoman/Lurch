@@ -5,11 +5,7 @@ import java.nio.IntBuffer;
 
 import org.lwjgl.system.MemoryStack;
 
-import java.io.IOException;
-
 import static org.lwjgl.stb.STBImage.*;
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL30.GL_R8;
 
 /**
  * Utility class for loading image files into OpenGL textures using STBImage.
@@ -29,12 +25,10 @@ public class TextureLoader
      * @param name File name of the texture
      * 
      * @return Loaded {@link Texture} object
-     * 
-     * @throws IOException If loading fails or the file is not found
      */
-    public static Texture load(String name) throws IOException
+    public static Texture load(String name)
     {
-        return load(name, GL_TEXTURE_2D, GL_RGBA8, GL_RGBA);
+        return load(name, TextureConfig.DEFAULT);
     }
 
 
@@ -47,18 +41,9 @@ public class TextureLoader
      * @param format          Format of pixel data
      * 
      * @return A fully initialized {@link Texture}
-     * 
-     * @throws IOException If image loading fails
      */
-    public static Texture load(String name, int target, int internalFormat, int format) throws IOException
+    public static Texture load(String name, TextureConfig config)
     {
-        /* Only support standard 8-bit RGB or RGBA internal formats */
-        if (internalFormat != GL_RGBA8 && internalFormat != GL_RGB8) 
-        {
-            throw new IllegalArgumentException("Unsupported internal format: " + internalFormat);
-        }
-
-
         /* Texture file path */
         final String path = TEXTURE_FOLDER + name;
 
@@ -78,16 +63,15 @@ public class TextureLoader
             IntBuffer h = stack.mallocInt(1);
             IntBuffer channels = stack.mallocInt(1);
             
-            data = stbi_load(path, w, h, channels, 
-                    internalFormat == GL_RGBA8 ? 4 : 
-                    internalFormat == GL_RGB8  ? 3 :
-                    internalFormat == GL_R8    ? 1 : 0);
+
+            /* Load image data using STBImage */
+            data = stbi_load(path, w, h, channels, config.channels);
 
 
             /* Check for failure */
             if (data == null) 
             {
-                throw new IOException("Failed to load image '" + path + "': " + stbi_failure_reason());
+                throw new IllegalArgumentException("Failed to load image '" + path + "': " + stbi_failure_reason());
             }
 
 
@@ -97,12 +81,15 @@ public class TextureLoader
 
 
             /* Create texture and upload image data to GPU */
-            Texture texture = new Texture(width, height, target, internalFormat, format);
-            texture.bind();
-            texture.upload(data);
-            texture.unbind();
+            Texture texture = new Texture(width, height, config.target, config.internalFormat, config.format);
 
+            
+            texture.bind();         // Bind texture
+            texture.upload(data);   // Upload texture data
+            config.apply();         // Apply texture parameters
+            texture.unbind();       // Unbind texture
 
+            
             /* Free the loaded image data (CPU-side) */
             stbi_image_free(data);
 
