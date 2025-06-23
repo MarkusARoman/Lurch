@@ -8,7 +8,6 @@ Currently in early development
 - Shaders Support
 - Quad Rendering
 - Load Textures
-- Cache Textures
 
 ---
 
