@@ -9,9 +9,6 @@ import static org.lwjgl.opengl.GL11.glBindTexture;
 import static org.lwjgl.opengl.GL11.glDeleteTextures;
 import static org.lwjgl.opengl.GL11.glTexImage2D;
 
-import static org.lwjgl.opengl.GL13.GL_TEXTURE0;
-import static org.lwjgl.opengl.GL13.glActiveTexture;
-
 
 /**
  * Represents a texture in OpenGL.
@@ -98,7 +95,8 @@ public class Texture
 
 
     /** 
-     * Binds the texture to the active texture unit 
+     * Binds the texture to the specified texture unit 
+     * @param unit the texture unit to bind to (e.g., 0 for GL_TEXTURE0)
      */
     public void bind() {
         glBindTexture(target, handle);
@@ -112,29 +110,6 @@ public class Texture
         glBindTexture(target, 0);
     }
 
-
-    /**
-     * Bind the texture to a specific texture unit.
-     * 
-     * @param unit The texture unit to bind the texture to.
-     */
-    public void bind(int unit) 
-    {
-        glActiveTexture(GL_TEXTURE0 + unit);
-        glBindTexture(GL_TEXTURE_2D, handle);
-    }
-
-
-    /**
-     * Unbind the texture from a specific texture unit.
-     * 
-     * @param unit The texture unit to unbind the texture from.
-     */
-    public void unbind(int unit) 
-    {
-        glActiveTexture(GL_TEXTURE0 + unit);
-        glBindTexture(GL_TEXTURE_2D, 0);
-    }
 
 
     /**
@@ -165,5 +140,16 @@ public class Texture
     public int getHeight() 
     {
         return height;
+    }
+
+
+    /**
+     * Gets the texture handle.
+     *
+     * @return OpenGL texture handle
+     */
+    public int getHandle()
+    {
+        return handle;
     }
 }
