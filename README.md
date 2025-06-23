@@ -12,6 +12,11 @@ Currently in early development
 
 ---
 
+## GLFW Window
+You can create a GLFW window with ``` Window(int, int, CharSequence) ``` or ``` Window(CharSequence) ``` for fullscreen.
+
+---
+
 ## Shader Support
 The simplest way to create a Shader object is to input the file path simply: e.g., ``` Shader("name.type") ``` 
 | type | extension |
