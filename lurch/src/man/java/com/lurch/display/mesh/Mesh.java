@@ -83,13 +83,12 @@ public class Mesh
         glEnableVertexAttribArray(1);
 
 
-        /* Unbind the vertex array object */
-        glBindVertexArray(0);
-
-
         /* Unbind buffers */
         glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
+
+        /* Unbind the vertex array object */
+        glBindVertexArray(0);
     }
 
 
